@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
 {
 
 	//MARICON
+    //tu madre
 
     public float velocidad = 5f;
     public List<GameObject> objetosAleatorios;
