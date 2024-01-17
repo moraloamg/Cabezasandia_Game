@@ -7,6 +7,9 @@ using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
+
+	//MARICON
+
     public float velocidad = 5f;
     public List<GameObject> objetosAleatorios;
     private GameObject objetoGenerado, objetoSiguiente;
