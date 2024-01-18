@@ -11,6 +11,9 @@ public class MusicController : MonoBehaviour
         // Obtén el componente Audio Source al inicio
         audioSource = GetComponent<AudioSource>();
 
+        // Ajusta el volumen
+        audioSource.volume = 0.2f;
+
         // Reproduce la música al inicio
         PlayMusic();
     }
