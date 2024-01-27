@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 
 public class ButtonController : MonoBehaviour
 {
-
+    //prueba
     public Sprite imagenNormal;  // Sprite original del botón
     public Sprite imagenResaltada;  // Nuevo sprite al pasar el ratón
 
