@@ -1,10 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 
 public class MusicController : MonoBehaviour
 {
     private AudioSource audioSource;
+    public AudioClip burbuja1;
+    public AudioClip boof;
 
     void Start()
     {
@@ -15,24 +18,8 @@ public class MusicController : MonoBehaviour
         audioSource.volume = 0.2f;
 
         // Reproduce la música al inicio
-        PlayMusic();
-    }
+        audioSource.Play();
 
-    // Método para reproducir la música
-    void PlayMusic()
-    {
-        if (!audioSource.isPlaying)
-        {
-            audioSource.Play();
-        }
-    }
-
-    // Método para detener la música
-    void StopMusic()
-    {
-        if (audioSource.isPlaying)
-        {
-            audioSource.Stop();
-        }
+        
     }
 }

@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using System.Threading.Tasks;
 
 public class GameController : MonoBehaviour
 {
@@ -15,7 +16,6 @@ public class GameController : MonoBehaviour
     public int score = 0;
 
     public AudioSource audioSource;
-    private AudioClip audioClip;
 
     void Start()
     {
@@ -24,10 +24,7 @@ public class GameController : MonoBehaviour
         // Puntuación que se mostrará en el TextMeshProUGUI
         scoreText.text = score.ToString();
 
-	audioSource = GetComponent<AudioSource>();
-	audioClip = Resources.Load<AudioClip>("Sounds/Bubble_sound");
-	audioSource.clip = audioClip;
-    	audioSource.Play();
+        audioSource = GameObject.Find("AudioSource").GetComponent<AudioSource>();
     }
     
 
@@ -68,24 +65,25 @@ public class GameController : MonoBehaviour
         //con ifs comprobamos los datos de la combinacion y generamos la fruta pertinente
         if(frutaOriginal == "Fresa(Clone)" && frutaColision == "Fresa(Clone)"){
             //Debug.Log("Generando un coco");
+            audioSource.PlayOneShot(audioSource.GetComponent<MusicController>().burbuja1);
             frutaGenerada = Instantiate(listaFrutems[1], puntoMedio, Quaternion.identity);
             frutaGenerada.GetComponent<Collider2D>().enabled = true;
             frutaGenerada.GetComponent<Rigidbody2D>().gravityScale = 1f;
             //Debug.Log("Generada una "+frutaGenerada.name+" con ID"+frutaGenerada.GetInstanceID());
-		audioClip = Resources.Load<AudioClip>("Sounds/Bubble_sound");
-		PlayAudio(audioClip);
 	        IncrementarScore(2);
         }
         if(frutaOriginal == "Coco(Clone)" && frutaColision == "Coco(Clone)"){
             //Debug.Log("Generando in kiwi");
+            audioSource.PlayOneShot(audioSource.GetComponent<MusicController>().burbuja1);
             frutaGenerada = Instantiate(listaFrutems[2], puntoMedio, Quaternion.identity);
             frutaGenerada.GetComponent<Collider2D>().enabled = true;
             frutaGenerada.GetComponent<Rigidbody2D>().gravityScale = 1f;
-            //Debug.Log("Generada una "+frutaGenerada.name+" con ID"+frutaGenerada.GetInstanceID());
+            //Debug.Log("Generada una "+frutaGenerada.name+" con ID"+frutaGenerada.GetInstanceID()); 
 	        IncrementarScore(4);
         }
 	    if(frutaOriginal == "Kiwi(Clone)" && frutaColision == "Kiwi(Clone)"){
             //Debug.Log("Generando un platano");
+            audioSource.PlayOneShot(audioSource.GetComponent<MusicController>().burbuja1);
             frutaGenerada = Instantiate(listaFrutems[3], puntoMedio, Quaternion.identity);
             frutaGenerada.GetComponent<Collider2D>().enabled = true;
             frutaGenerada.GetComponent<Rigidbody2D>().gravityScale = 1f;
@@ -94,14 +92,16 @@ public class GameController : MonoBehaviour
         }
 	    if(frutaOriginal == "Platano(Clone)" && frutaColision == "Platano(Clone)"){
             //Debug.Log("Generando una naranja");
+            audioSource.PlayOneShot(audioSource.GetComponent<MusicController>().burbuja1);
             frutaGenerada = Instantiate(listaFrutems[4], puntoMedio, Quaternion.identity);
             frutaGenerada.GetComponent<Collider2D>().enabled = true;
             frutaGenerada.GetComponent<Rigidbody2D>().gravityScale = 1f;
-            //Debug.Log("Generada una "+frutaGenerada.name+" con ID"+frutaGenerada.GetInstanceID());
+            //Debug.Log("Generada una "+frutaGenerada.name+" con ID"+frutaGenerada.GetInstanceID());       
 	        IncrementarScore(16);
         }
 	    if(frutaOriginal == "Naranja(Clone)" && frutaColision == "Naranja(Clone)"){
             //Debug.Log("Generando una manzana");
+            audioSource.PlayOneShot(audioSource.GetComponent<MusicController>().burbuja1);
             frutaGenerada = Instantiate(listaFrutems[5], puntoMedio, Quaternion.identity);
             frutaGenerada.GetComponent<Collider2D>().enabled = true;
             frutaGenerada.GetComponent<Rigidbody2D>().gravityScale = 1f;
@@ -110,6 +110,7 @@ public class GameController : MonoBehaviour
         }
 	    if(frutaOriginal == "Manzana(Clone)" && frutaColision == "Manzana(Clone)"){
             //Debug.Log("Generando un melocoton");
+            audioSource.PlayOneShot(audioSource.GetComponent<MusicController>().burbuja1);
             frutaGenerada = Instantiate(listaFrutems[6], puntoMedio, Quaternion.identity);
             frutaGenerada.GetComponent<Collider2D>().enabled = true;
             frutaGenerada.GetComponent<Rigidbody2D>().gravityScale = 1f;
@@ -118,6 +119,7 @@ public class GameController : MonoBehaviour
         }
 	    if(frutaOriginal == "Melocoton(Clone)" && frutaColision == "Melocoton(Clone)"){
             //Debug.Log("Generando una piña");
+            audioSource.PlayOneShot(audioSource.GetComponent<MusicController>().burbuja1);
             frutaGenerada = Instantiate(listaFrutems[7], puntoMedio, Quaternion.identity);
             frutaGenerada.GetComponent<Collider2D>().enabled = true;
             frutaGenerada.GetComponent<Rigidbody2D>().gravityScale = 1f;
@@ -126,6 +128,7 @@ public class GameController : MonoBehaviour
         }
 	    if(frutaOriginal == "Piña(Clone)" && frutaColision == "Piña(Clone)"){
             //Debug.Log("Generando una pera");
+            audioSource.PlayOneShot(audioSource.GetComponent<MusicController>().burbuja1);
             frutaGenerada = Instantiate(listaFrutems[8], puntoMedio, Quaternion.identity);
             frutaGenerada.GetComponent<Collider2D>().enabled = true;
             frutaGenerada.GetComponent<Rigidbody2D>().gravityScale = 1f;
@@ -134,6 +137,7 @@ public class GameController : MonoBehaviour
         }
 	    if(frutaOriginal == "Pera(Clone)" && frutaColision == "Pera(Clone)"){
             //Debug.Log("Generando una sandia");
+            audioSource.PlayOneShot(audioSource.GetComponent<MusicController>().boof);
             frutaGenerada = Instantiate(listaFrutems[9], puntoMedio, Quaternion.identity);
             frutaGenerada.GetComponent<Collider2D>().enabled = true;
             frutaGenerada.GetComponent<Rigidbody2D>().gravityScale = 1f;
@@ -142,6 +146,7 @@ public class GameController : MonoBehaviour
         }
 	    if(frutaOriginal == "Sandia(Clone)" && frutaColision == "Sandia(Clone)"){
             //Debug.Log("Generando una fresa");
+            audioSource.PlayOneShot(audioSource.GetComponent<MusicController>().burbuja1);
             frutaGenerada = Instantiate(listaFrutems[0], puntoMedio, Quaternion.identity);
             frutaGenerada.GetComponent<Collider2D>().enabled = true;
             frutaGenerada.GetComponent<Rigidbody2D>().gravityScale = 1f;
@@ -161,10 +166,7 @@ public class GameController : MonoBehaviour
         //Debug.Log("Score actual:"+this.score);
     }
 
-    private void PlayAudio(AudioClip audioclip)
-    {
-    audioSource.clip = audioClip;
-    audioSource.Play();
-    }
+
+    
 
 }
