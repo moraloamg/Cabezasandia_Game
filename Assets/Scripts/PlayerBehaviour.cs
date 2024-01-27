@@ -24,6 +24,8 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+
+
         float movimientoHorizontal = Input.GetAxis("Horizontal");
         Vector2 movimiento = new Vector2(movimientoHorizontal, 0f);
 
@@ -36,6 +38,7 @@ public class PlayerController : MonoBehaviour
         // Verificar si la tecla espacio ha sido presionada
         if (teclaEspacioHabilitada && Input.GetKeyDown(KeyCode.Space) && objetoGenerado != null)
         {
+
             // Comprobar tecla para poder inhabilitarla durante un segundo
             teclaEspacioHabilitada = false;
 
