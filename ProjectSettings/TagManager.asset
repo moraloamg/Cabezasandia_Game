@@ -10,6 +10,9 @@ TagManager:
   - BotonStart
   - BotonSalir
   - BotonCreditos
+  - BotonAlMenu
+  - BotonSeguir
+  - BotonAlMenu2
   layers:
   - Default
   - TransparentFX

@@ -9,8 +9,11 @@ public class GameOverController : MonoBehaviour
     private float collisionTime = 0f;
     private float requiredCollisionTime = 1.5f;
 
+    public bool finDeJuego = false;
+
     void Update()
     {
+
         // Verificar si la colisión ha estado ocurriendo durante el tiempo requerido
         if (isColliding)
         {
@@ -23,6 +26,9 @@ public class GameOverController : MonoBehaviour
                 // Aquí puedes realizar otras acciones que desees
 
 		        collisionTime = 0f;
+
+                finDeJuego = true;  
+
             }
         }
     }
@@ -44,13 +50,6 @@ public class GameOverController : MonoBehaviour
             isColliding = false;
             collisionTime = 0f;
         }
-    }
-
-    IEnumerator MenuRestart(Collider2D collider)
-    {
-	    yield return new WaitForSeconds(1.5f);
-
-	    Debug.Log("aqui se muestra el menu restart");
     }
 
     IEnumerator Parpadear()
