@@ -14,12 +14,20 @@ public class GameController : MonoBehaviour
     public TextMeshProUGUI scoreText;
     public int score = 0;
 
+    public AudioSource audioSource;
+    private AudioClip audioClip;
+
     void Start()
     {
         //inicializamos el componente
         scoreText = GameObject.Find("Text (TMP)").GetComponent<TextMeshProUGUI>();
         // Puntuación que se mostrará en el TextMeshProUGUI
         scoreText.text = score.ToString();
+
+	audioSource = GetComponent<AudioSource>();
+	audioClip = Resources.Load<AudioClip>("Sounds/Bubble_sound");
+	audioSource.clip = audioClip;
+    	audioSource.Play();
     }
     
 
@@ -64,6 +72,8 @@ public class GameController : MonoBehaviour
             frutaGenerada.GetComponent<Collider2D>().enabled = true;
             frutaGenerada.GetComponent<Rigidbody2D>().gravityScale = 1f;
             //Debug.Log("Generada una "+frutaGenerada.name+" con ID"+frutaGenerada.GetInstanceID());
+		audioClip = Resources.Load<AudioClip>("Sounds/Bubble_sound");
+		PlayAudio(audioClip);
 	        IncrementarScore(2);
         }
         if(frutaOriginal == "Coco(Clone)" && frutaColision == "Coco(Clone)"){
@@ -149,6 +159,12 @@ public class GameController : MonoBehaviour
         this.score += entradaScore;
         scoreText.text = score.ToString();
         //Debug.Log("Score actual:"+this.score);
+    }
+
+    private void PlayAudio(AudioClip audioclip)
+    {
+    audioSource.clip = audioClip;
+    audioSource.Play();
     }
 
 }
