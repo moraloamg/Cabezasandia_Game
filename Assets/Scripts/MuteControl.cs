@@ -27,7 +27,6 @@ public class MuteControl : MonoBehaviour
     {
         // Código a ejecutar cuando se hace clic en el objeto
         string buttonTag = gameObject.tag;
-        Debug.Log(buttonTag);
 
         switch(buttonTag)
         {
