@@ -1,13 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MusicController : MonoBehaviour
 {
     private AudioSource audioSource;
     public AudioClip burbuja1;
     public AudioClip boof;
+    public AudioClip sonidoClick;
+
+
+    void Awake()
+    {
+        DontDestroyOnLoad(this.gameObject);
+    }
 
     void Start()
     {
@@ -17,9 +26,8 @@ public class MusicController : MonoBehaviour
         // Ajusta el volumen
         audioSource.volume = 0.2f;
 
-        // Reproduce la música al inicio
-        audioSource.Play();
-
+        audioSource.Stop();
         
     }
+
 }

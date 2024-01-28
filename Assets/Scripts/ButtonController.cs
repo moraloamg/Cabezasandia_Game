@@ -15,6 +15,8 @@ public class ButtonController : MonoBehaviour
 
     private SpriteRenderer spriteRenderer;
 
+    public AudioSource audioSource;
+
     private static int contadorID = 0;
     public int uniqueID;
 
@@ -27,6 +29,8 @@ public class ButtonController : MonoBehaviour
 
 
     void Start(){
+
+        audioSource = GameObject.Find("AudioSource").GetComponent<AudioSource>();
 
         uniqueID = contadorID;
         contadorID++;
@@ -64,6 +68,7 @@ public class ButtonController : MonoBehaviour
             {
                 // Cambia a la escena "Juego"
                 SceneManager.LoadScene("MainScene");
+                audioSource.Play();
             }
         }
 
@@ -163,6 +168,7 @@ public class ButtonController : MonoBehaviour
 
     private void BotonAlMenu2()
     {
+        audioSource.PlayOneShot(audioSource.GetComponent<MusicController>().sonidoClick);
         
         // Desactivar el componente Renderer
         Renderer rendererCartelGameOver = GameObject.Find("cartel_game_over").GetComponent<Renderer>();
@@ -199,6 +205,7 @@ public class ButtonController : MonoBehaviour
             colliderStart.enabled = true;
         }
 
+        audioSource.Stop();
         SceneManager.LoadScene("MenuScene");
 
         Time.timeScale = 1f;
@@ -206,6 +213,7 @@ public class ButtonController : MonoBehaviour
 
     private void BotonSeguir()
     {
+        audioSource.PlayOneShot(audioSource.GetComponent<MusicController>().sonidoClick);
         Time.timeScale = 1f;
 
         // Desactivar el componente Renderer
@@ -230,6 +238,7 @@ public class ButtonController : MonoBehaviour
 
     private void BotonAlMenu()
     {
+        audioSource.PlayOneShot(audioSource.GetComponent<MusicController>().sonidoClick);
 
         Renderer rendererCartel = GameObject.Find("cartel_salir").GetComponent<Renderer>();
         Renderer rendererBotonSeguir = GameObject.Find("boton_seguir").GetComponent<Renderer>();
@@ -271,7 +280,7 @@ public class ButtonController : MonoBehaviour
             colliderStart.enabled = true;
         }
 
-
+        audioSource.Stop();
         SceneManager.LoadScene("MenuScene");
 
         Time.timeScale = 1f;
@@ -280,6 +289,7 @@ public class ButtonController : MonoBehaviour
 
     void BotonStart()
     {
+        audioSource.PlayOneShot(audioSource.GetComponent<MusicController>().sonidoClick);
 	    // Cambia a la MainScene
         SceneManager.LoadScene("TutorialScene");
 
@@ -302,6 +312,7 @@ public class ButtonController : MonoBehaviour
 
     void BotonSalir()
     {
+        audioSource.PlayOneShot(audioSource.GetComponent<MusicController>().sonidoClick);
 	    // Cierra la aplicación o juego
         Debug.Log("Has salido");
         Application.Quit();

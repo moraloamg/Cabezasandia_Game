@@ -13,6 +13,7 @@ TagManager:
   - BotonAlMenu
   - BotonSeguir
   - BotonAlMenu2
+  - BotonMute
   layers:
   - Default
   - TransparentFX
