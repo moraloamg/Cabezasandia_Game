@@ -179,6 +179,10 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 0.06243326
       objectReference: {fileID: 0}
+    - target: {fileID: 3276603747271160740, guid: 74be957e7ec5da34daeb6786535448a7, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7133772771632543339, guid: 74be957e7ec5da34daeb6786535448a7, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.03
@@ -728,8 +732,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4280632934
+  m_fontColor: {r: 0.40000004, g: 0.27450982, b: 0.14509805, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -1099,7 +1103,7 @@ Transform:
   m_GameObject: {fileID: 1801991992}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -12.72, y: -0.14, z: 0}
+  m_LocalPosition: {x: -12.82, y: -6.01, z: 0}
   m_LocalScale: {x: 2.7948494, y: 2.7948494, z: 2.7948494}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1306,12 +1310,20 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1940780232814590238, guid: db6ee1ed5b27b0f43b3c6d76e37a344e, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.6330631
+      objectReference: {fileID: 0}
+    - target: {fileID: 1940780232814590238, guid: db6ee1ed5b27b0f43b3c6d76e37a344e, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.7079741
+      objectReference: {fileID: 0}
+    - target: {fileID: 1940780232814590238, guid: db6ee1ed5b27b0f43b3c6d76e37a344e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -14.26
+      value: -14.46
       objectReference: {fileID: 0}
     - target: {fileID: 1940780232814590238, guid: db6ee1ed5b27b0f43b3c6d76e37a344e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.43
+      value: -4.04
       objectReference: {fileID: 0}
     - target: {fileID: 1940780232814590238, guid: db6ee1ed5b27b0f43b3c6d76e37a344e, type: 3}
       propertyPath: m_LocalPosition.z
