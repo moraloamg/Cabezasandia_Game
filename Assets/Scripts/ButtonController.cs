@@ -24,7 +24,6 @@ public class ButtonController : MonoBehaviour
     void Awake()
     {
         DontDestroyOnLoad(this.gameObject);
-
     }
 
 
@@ -60,6 +59,7 @@ public class ButtonController : MonoBehaviour
 
     void Update()
     {
+
         // Comprueba si el jugador está en la escena "tutorial"
         if (SceneManager.GetActiveScene().name == "TutorialScene")
         {
@@ -79,18 +79,22 @@ public class ButtonController : MonoBehaviour
 
                 Time.timeScale = 0f;
 
-                // Desactivar el componente Renderer
+                // activar el componente Renderer
                 Renderer rendererCartelGameOver = GameObject.Find("cartel_game_over").GetComponent<Renderer>();
                 Renderer rendererBotonSalir2 = GameObject.Find("boton_almenu2").GetComponent<Renderer>();
+                Renderer rendererReiniciar = GameObject.Find("boton_reiniciar").GetComponent<Renderer>();
 
                 Collider2D colliderSalir2 = GameObject.Find("boton_almenu2").GetComponent<Collider2D>();
+                Collider2D colliderReiniciar = GameObject.Find("boton_reiniciar").GetComponent<Collider2D>();
 
                 if (rendererCartelGameOver != null && rendererBotonSalir2 != null)
                 {
                     rendererCartelGameOver.enabled = true;
                     rendererBotonSalir2.enabled = true;
+                    rendererReiniciar.enabled = true;
 
                     colliderSalir2.enabled = true;
+                    colliderReiniciar.enabled = true;
                 }
             }
 
@@ -157,6 +161,9 @@ public class ButtonController : MonoBehaviour
             case "BotonAlMenu2":
                 BotonAlMenu2();
                 break;
+            case "BotonReiniciar":
+                BotonReiniciar();
+                break;
             case "BotonSeguir":
                 BotonSeguir();
                 break;
@@ -166,6 +173,15 @@ public class ButtonController : MonoBehaviour
         
     }
 
+    private void BotonReiniciar()
+    {
+        audioSource.PlayOneShot(audioSource.GetComponent<MusicController>().sonidoClick);
+
+        GameObject.Find("EndGame").GetComponent<GameOverController>().finDeJuego = false;
+        Time.timeScale = 1f;
+        SceneManager.LoadScene("MainScene");
+    }
+
     private void BotonAlMenu2()
     {
         audioSource.PlayOneShot(audioSource.GetComponent<MusicController>().sonidoClick);
@@ -173,19 +189,22 @@ public class ButtonController : MonoBehaviour
         // Desactivar el componente Renderer
         Renderer rendererCartelGameOver = GameObject.Find("cartel_game_over").GetComponent<Renderer>();
         Renderer rendererBotonSalir2 = GameObject.Find("boton_almenu2").GetComponent<Renderer>();
+        Renderer rendererBotonReiniciar = GameObject.Find("boton_reiniciar").GetComponent<Renderer>();
 
         Collider2D colliderSalir2 = GameObject.Find("boton_almenu2").GetComponent<Collider2D>();
+        Collider2D colliderReiniciar = GameObject.Find("boton_almenu2").GetComponent<Collider2D>();
 
         if (rendererCartelGameOver != null && rendererBotonSalir2 != null)
         {
             rendererCartelGameOver.enabled = false;
             rendererBotonSalir2.enabled = false;
+            rendererBotonReiniciar.enabled = false;
 
             colliderSalir2.enabled = false;
+            colliderReiniciar.enabled = false;
 
             GameObject.Find("EndGame").GetComponent<GameOverController>().finDeJuego = false;
         }
-
 
         Renderer rendererSalirJuego = GameObject.Find("ButtonSalir").GetComponent<Renderer>();
         Collider2D colliderSalirJuego = GameObject.Find("ButtonSalir").GetComponent<Collider2D>();
