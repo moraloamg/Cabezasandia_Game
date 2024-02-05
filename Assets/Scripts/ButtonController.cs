@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -87,6 +88,8 @@ public class ButtonController : MonoBehaviour
                 Collider2D colliderSalir2 = GameObject.Find("boton_almenu2").GetComponent<Collider2D>();
                 Collider2D colliderReiniciar = GameObject.Find("boton_reiniciar").GetComponent<Collider2D>();
 
+                TextMeshProUGUI puntuacionFinal = GameObject.Find("Resumen_puntuacion").GetComponent<TextMeshProUGUI>();
+
                 if (rendererCartelGameOver != null && rendererBotonSalir2 != null)
                 {
                     rendererCartelGameOver.enabled = true;
@@ -95,6 +98,9 @@ public class ButtonController : MonoBehaviour
 
                     colliderSalir2.enabled = true;
                     colliderReiniciar.enabled = true;
+
+                    puntuacionFinal.enabled = true;
+                    puntuacionFinal.text = GameObject.Find("Text (TMP)").GetComponent<TextMeshProUGUI>().text;
                 }
             }
 
@@ -194,6 +200,8 @@ public class ButtonController : MonoBehaviour
         Collider2D colliderSalir2 = GameObject.Find("boton_almenu2").GetComponent<Collider2D>();
         Collider2D colliderReiniciar = GameObject.Find("boton_almenu2").GetComponent<Collider2D>();
 
+        TextMeshProUGUI puntuacionFinal = GameObject.Find("Resumen_puntuacion").GetComponent<TextMeshProUGUI>();
+
         if (rendererCartelGameOver != null && rendererBotonSalir2 != null)
         {
             rendererCartelGameOver.enabled = false;
@@ -202,6 +210,8 @@ public class ButtonController : MonoBehaviour
 
             colliderSalir2.enabled = false;
             colliderReiniciar.enabled = false;
+
+            puntuacionFinal.enabled = false;
 
             GameObject.Find("EndGame").GetComponent<GameOverController>().finDeJuego = false;
         }
