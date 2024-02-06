@@ -185,6 +185,7 @@ public class ButtonController : MonoBehaviour
 
         GameObject.Find("EndGame").GetComponent<GameOverController>().finDeJuego = false;
         Time.timeScale = 1f;
+        audioSource.Play();
         SceneManager.LoadScene("MainScene");
     }
 

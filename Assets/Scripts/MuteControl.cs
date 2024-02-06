@@ -15,6 +15,7 @@ public class MuteControl : MonoBehaviour
     void Start()
     {
         audioSource = GameObject.Find("AudioSource").GetComponent<AudioSource>();
+            
     }
 
     // Update is called once per frame
@@ -51,4 +52,6 @@ public class MuteControl : MonoBehaviour
             iconoMute.SetActive(false);
         }
     }
+
+    
 }

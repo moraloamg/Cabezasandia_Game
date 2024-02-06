@@ -11,9 +11,14 @@ public class GameOverController : MonoBehaviour
 
     public bool finDeJuego = false;
 
+    new Renderer renderer;
+
+    void Start(){
+        renderer = GetComponent<Renderer>();
+    }
+
     void Update()
     {
-
         // Verificar si la colisión ha estado ocurriendo durante el tiempo requerido
         if (isColliding)
         {
@@ -22,10 +27,13 @@ public class GameOverController : MonoBehaviour
             if (collisionTime >= requiredCollisionTime)
             {
                 Debug.Log("¡Hola! La colisión ha durado al menos 1.5 segundos.");
-		StartCoroutine(Parpadear());
-		collisionTime = 0f;
+                renderer.enabled = true;
+                collisionTime = 0f;
+                
                 finDeJuego = true;  
-
+            }
+            else if(collisionTime < requiredCollisionTime && collisionTime > 0.7f){
+                StartCoroutine(Parpadear(isColliding));
             }
         }
     }
@@ -49,13 +57,16 @@ public class GameOverController : MonoBehaviour
         }
     }
 
-    IEnumerator Parpadear()
+    IEnumerator Parpadear(bool colisionando)
     {
-        Renderer renderer = GetComponent<Renderer>();
-
 	    // El bucle sirve para hacer que el objeto parpadee
-        while (true)
+        while (colisionando && !finDeJuego)
         {
+            if(!isColliding){
+                renderer.enabled = false;
+                break;
+            }
+
             // Invertir la visibilidad (activar/desactivar)
             renderer.enabled = !renderer.enabled;
 
