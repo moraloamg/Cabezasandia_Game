@@ -22,11 +22,8 @@ public class GameOverController : MonoBehaviour
             if (collisionTime >= requiredCollisionTime)
             {
                 Debug.Log("¡Hola! La colisión ha durado al menos 1.5 segundos.");
-		        StartCoroutine(Parpadear());
-                // Aquí puedes realizar otras acciones que desees
-
-		        collisionTime = 0f;
-
+		StartCoroutine(Parpadear());
+		collisionTime = 0f;
                 finDeJuego = true;  
 
             }
