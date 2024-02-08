@@ -32,7 +32,7 @@ public class GameOverController : MonoBehaviour
                 
                 finDeJuego = true;  
             }
-            else if(collisionTime < requiredCollisionTime && collisionTime > 0.7f){
+            else if(collisionTime < requiredCollisionTime && collisionTime > 0.9f){
                 StartCoroutine(Parpadear(isColliding));
             }
         }

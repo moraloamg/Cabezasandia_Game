@@ -8,9 +8,9 @@ using UnityEngine.SceneManagement;
 
 public class ButtonController : MonoBehaviour
 {
-    //prueba
-    public Sprite imagenNormal;  // Sprite original del botón
-    public Sprite imagenResaltada;  // Nuevo sprite al pasar el ratón
+
+    public Sprite imagenNormal;  //Sprite original del botón
+    public Sprite imagenResaltada;  //Nuevo sprite al pasar el ratón
 
     private GameObject botonSalir;
 
@@ -21,7 +21,7 @@ public class ButtonController : MonoBehaviour
     private static int contadorID = 0;
     public int uniqueID;
 
-    // Esto hace que el objeto no se destruya al cargar una nueva escena
+    //Esto hace que el objeto no se destruya al cargar una nueva escena
     void Awake()
     {
         DontDestroyOnLoad(this.gameObject);
@@ -40,20 +40,16 @@ public class ButtonController : MonoBehaviour
         }
 
 
-        // Obtén el componente SpriteRenderer del objeto
+        //Obtener el componente SpriteRenderer del objeto
         spriteRenderer = GetComponent<SpriteRenderer>();
 
-        // Asegúrate de que se haya asignado un SpriteRenderer y al menos un sprite
+        //Asegurarse de que se haya asignado un SpriteRenderer y al menos un sprite
         if (spriteRenderer == null || imagenNormal == null || imagenResaltada == null)
         {
             Debug.LogError("Se requiere un SpriteRenderer y sprites asignados.");
             return;
         }
 
-        // Establece el sprite normal al inicio
-        //spriteRenderer.sprite = imagenNormal;
-
-        //cambiar esto !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         botonSalir = GameObject.Find("ButtonSalir"); 
                 
     }
@@ -61,13 +57,13 @@ public class ButtonController : MonoBehaviour
     void Update()
     {
 
-        // Comprueba si el jugador está en la escena "tutorial"
+        //Comprueba si el jugador está en la escena "tutorial"
         if (SceneManager.GetActiveScene().name == "TutorialScene")
         {
-            // Comprueba si se ha pulsado la tecla de espacio
+            //Comprueba si se ha pulsado la tecla de espacio
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                // Cambia a la escena "Juego"
+                //Cambia a la escena "Juego"
                 SceneManager.LoadScene("MainScene");
                 audioSource.Play();
             }
@@ -80,7 +76,7 @@ public class ButtonController : MonoBehaviour
 
                 Time.timeScale = 0f;
 
-                // activar el componente Renderer
+           
                 Renderer rendererCartelGameOver = GameObject.Find("cartel_game_over").GetComponent<Renderer>();
                 Renderer rendererBotonSalir2 = GameObject.Find("boton_almenu2").GetComponent<Renderer>();
                 Renderer rendererReiniciar = GameObject.Find("boton_reiniciar").GetComponent<Renderer>();
@@ -106,12 +102,11 @@ public class ButtonController : MonoBehaviour
 
 
 
-            // Comprueba si se ha pulsado la tecla escape
+            //Comprueba si se ha pulsado la tecla escape
             if (Input.GetKeyDown(KeyCode.Escape) && GameObject.Find("EndGame").GetComponent<GameOverController>().finDeJuego != true)
             {
                 Time.timeScale = 0f;
 
-                // Desactivar el componente Renderer
                 Renderer rendererCartel = GameObject.Find("cartel_salir").GetComponent<Renderer>();
                 Renderer rendererBotonSeguir = GameObject.Find("boton_seguir").GetComponent<Renderer>();
                 Renderer rendererBotonSalir = GameObject.Find("boton_almenu").GetComponent<Renderer>();
@@ -133,24 +128,24 @@ public class ButtonController : MonoBehaviour
     }
     
 
-    // Al pasar el ratón sobre el botón
+    //Al pasar el ratón sobre el botón
     void OnMouseEnter()
     {
-        // Cambia el sprite al resaltado
+        //Cambia el sprite al resaltado
         spriteRenderer.sprite = imagenResaltada;
     }
 
-    // Al salir del ratón del botón
+    //Al salir del ratón del botón
     void OnMouseExit()
     {
-        // Vuelve al sprite normal
+        //Vuelve al sprite normal
         spriteRenderer.sprite = imagenNormal;
     }
 
-    // Al pulsar con el raton sobre el botón
+    //Al pulsar con el raton sobre el botón
     void OnMouseDown()
     {
-        // Código a ejecutar cuando se hace clic en el objeto
+        //Código a ejecutar cuando se hace clic en el objeto
         string buttonTag = gameObject.tag;
 
         switch(buttonTag)
@@ -193,7 +188,6 @@ public class ButtonController : MonoBehaviour
     {
         audioSource.PlayOneShot(audioSource.GetComponent<MusicController>().sonidoClick);
         
-        // Desactivar el componente Renderer
         Renderer rendererCartelGameOver = GameObject.Find("cartel_game_over").GetComponent<Renderer>();
         Renderer rendererBotonSalir2 = GameObject.Find("boton_almenu2").GetComponent<Renderer>();
         Renderer rendererBotonReiniciar = GameObject.Find("boton_reiniciar").GetComponent<Renderer>();
@@ -246,7 +240,6 @@ public class ButtonController : MonoBehaviour
         audioSource.PlayOneShot(audioSource.GetComponent<MusicController>().sonidoClick);
         Time.timeScale = 1f;
 
-        // Desactivar el componente Renderer
         Renderer rendererCartel = GameObject.Find("cartel_salir").GetComponent<Renderer>();
         Renderer rendererBotonSeguir = GameObject.Find("boton_seguir").GetComponent<Renderer>();
         Renderer rendererBotonSalir = GameObject.Find("boton_almenu").GetComponent<Renderer>();
@@ -287,11 +280,6 @@ public class ButtonController : MonoBehaviour
             colliderSalir.enabled = false;
         }
         
-        //Destroy(botonSalir);
-        //Destroy(cartelPausa);
-        //Destroy(botonSeguirPausa);
-        //Destroy(botonSalirPausa);
-        
         
         Renderer rendererSalirJuego = GameObject.Find("ButtonSalir").GetComponent<Renderer>();
         Collider2D colliderSalirJuego = GameObject.Find("ButtonSalir").GetComponent<Collider2D>();
@@ -320,10 +308,10 @@ public class ButtonController : MonoBehaviour
     void BotonStart()
     {
         audioSource.PlayOneShot(audioSource.GetComponent<MusicController>().sonidoClick);
-	    // Cambia a la MainScene
+	    //Cambia a la MainScene
         SceneManager.LoadScene("TutorialScene");
 
-        // Desactivar el componente Renderer
+        //Desactivar el componente Renderer
         Renderer renderer = GetComponent<Renderer>();
         Renderer renderer2 = botonSalir.GetComponent<Renderer>();
 
@@ -343,7 +331,7 @@ public class ButtonController : MonoBehaviour
     void BotonSalir()
     {
         audioSource.PlayOneShot(audioSource.GetComponent<MusicController>().sonidoClick);
-	    // Cierra la aplicación o juego
+	    //Cierra la aplicación o juego
         Debug.Log("Has salido");
         Application.Quit();
     }

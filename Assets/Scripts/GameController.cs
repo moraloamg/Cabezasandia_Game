@@ -52,7 +52,6 @@ public class GameController : MonoBehaviour
 
         yield return new WaitUntil(() => frutaOriginal == null && frutaColision == null);
 
-        //Debug.Log("Ambas frutas destruidas");
 
         //ahora llamamos al controlador de frutas para generar la fruta pertinente con los datos que
         //hemos recogido
@@ -155,15 +154,12 @@ public class GameController : MonoBehaviour
         }
         //notifcamos que el gameController esta libre de tareas por si se detecta otra colision
         libre = true;
-        //Debug.Log("Game controler libre");
     }
 
     public void IncrementarScore(int entradaScore)
     {
-        //Debug.Log("Entrada: "+ entradaScore);
         this.score += entradaScore;
         scoreText.text = score.ToString();
-        //Debug.Log("Score actual:"+this.score);
     }
 
 
